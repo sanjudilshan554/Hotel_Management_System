@@ -4,8 +4,8 @@
             <section class="main-section mt-1">
                 <section class="add-new-modal-section">
                     <div class="">
-                    <h1 class="display-5 text-left header">Hotel Types</h1>
-                </div>
+                        <h1 class="display-5 text-left header">Hotel Types</h1>
+                    </div>
                     <!-- Button trigger modal -->
                     <div class="mt-5">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -13,7 +13,7 @@
                             Add New
                         </button>
                     </div>
-                    <!-- Modal -->
+                    <!-- create modal -->
                     <div class="modal fade" id="addHotelTypeModal" tabindex="-1" aria-labelledby="addHotelTypeModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -65,7 +65,7 @@
                 </section>
 
                 <section class="edit-exist-modal-section">
-                    <!-- Modal -->
+                    <!-- update -->
                     <div class="modal fade" id="editHotelTypeModal" tabindex="-1" aria-labelledby="editHotelTypeModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -78,18 +78,14 @@
                                 <form>
                                     <div class="modal-body">
                                         <div class="from-content">
-
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Hotel Type Name</label>
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option value="1">Suite</option>
-                                                    <option value="2">Starndard</option>
-                                                    <option value="3">Delux</option>
-                                                </select>
+                                                <input class="form-control" type="text" placeholder="4 - 6" v-model="hotelTypes.name"
+                                                    aria-label="default input example">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Price Range</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" aria-label="Default select example" v-model="hotelTypes.price_range">
                                                     <option value="1">$50 - $100 per night</option>
                                                     <option value="2">$100 - $200 per night</option>
                                                     <option value="3">$150 - $300 per night</option>
@@ -97,12 +93,12 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Max Occupancy</label>
-                                                <input class="form-control" type="text" placeholder="4 - 6"
+                                                <input class="form-control" type="text" placeholder="4 - 6" v-model="hotelTypes.max_occupancy"
                                                     aria-label="default input example">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Extra</label>
-                                                <input class="form-control" type="text" placeholder="if any extra info"
+                                                <input class="form-control" type="text" placeholder="if any extra info" v-model="hotelTypes.extra"
                                                     aria-label="default input example">
                                             </div>
                                         </div>
@@ -110,7 +106,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Add</button>
+                                        <button type="submit" class="btn btn-primary" @click.prevent="update(hotelTypes.id)">Add</button>
                                     </div>
                                 </form>
                             </div>
@@ -143,7 +139,7 @@
                                             <div class="row">
                                                 <div class="action-buttons">
                                                     <button class="action-single-button fa-solid fa-pencil edit-button"
-                                                        data-bs-toggle="modal" data-bs-target="#editHotelTypeModal">
+                                                        data-bs-toggle="modal" data-bs-target="#editHotelTypeModal" @click.prevent="find(value.id)">
                                                     </button>
                                                     <button
                                                         class="action-single-button action-button fa-solid fa-trash delete-button" @click.prevent="deleteHotelType(value.id)"> 
@@ -177,6 +173,7 @@ const hotelTypes = ref({
 
 const hotelTypeData = ref(null);
 
+const singlehotelTypeData = ref(null);
 
 const createHotelType = async ()=>{
     try{
@@ -196,7 +193,7 @@ const getAll = async () => {
     } catch (error) {
         console.error('Error fetching hotel types data:', error);
     }
-}
+};
 
 const deleteHotelType = async (id) => {
     try {
@@ -206,7 +203,34 @@ const deleteHotelType = async (id) => {
     } catch(error) {
         console.log('Error:', error);
     }
-}
+};
+
+
+const find = async (id) => {
+    try{
+        const respones = await axios.get(route('hotel_types.find', id));
+        hotelTypes.value= respones.data.hotel_types;
+        hotelTypes.value.id=respones.data.hotel_types.id;
+    }catch(error){
+        console.log('Error:',error);
+    }
+};
+
+const update = async (id) =>{
+    try{
+        console.log(id);
+        const updateFields={
+            name: hotelTypes.value.name,
+            price_range: hotelTypes.value.price_range,
+            max_occupancy: hotelTypes.value.max_occupancy,
+            extra: hotelTypes.value.extra,
+        }
+        const response = await axios.post(route('hotel_types.update',id), updateFields);
+        getAll();
+    }catch(error){
+        console.log(error);
+    }
+};
 
 onMounted(getAll);
 </script>

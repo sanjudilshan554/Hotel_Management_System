@@ -23,4 +23,12 @@ class HotelTypeService{
         $this->hotel_types->destroy($id);
     }
 
+    public function find($id){
+        return $this->hotel_types->find($id);
+    }
+
+    public function update($id, $data){
+        $hotelType= $this->hotel_types->find($id);
+        return $hotelType->update($data);
+    }
 }

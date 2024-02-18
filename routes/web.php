@@ -39,6 +39,8 @@ Route::prefix('hotel_types')->group(function () {
     Route::post("/hotel_types/store",[HotelTypeController::class,"store"])->name("hotel_types.store");
     Route::get("/hotel_types/all",[HotelTypeController::class,"all"])->name("hotel_types.all");
     Route::delete("/hotel_types/delete/{id}",[HotelTypeController::class,"delete"])->name("hotel_types.delete");
+    Route::get("/hotel_types/find/{id}",[HotelTypeController::class,"find"])->name("hotel_types.find");
+    Route::post("/hotel_types/update/{id}",[HotelTypeController::class,"update"])->name("hotel_types.update");
 });
 
 
