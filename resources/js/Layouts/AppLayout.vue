@@ -73,7 +73,7 @@
              
             </Head>
 
-            <body class="g-sidenav-show bg-gray-100">
+            <body class="g-sidenav-show  bg-gray-100 body-background-image">
                 <noscript
                     ><iframe
                         src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
@@ -83,7 +83,8 @@
                     ></iframe
                 ></noscript>
 
-                <div class="min-height-300 bg-primary position-absolute w-100">
+                <!-- background color are there -->
+                <div class="min-height-300 body-background-image position-absolute w-100"> 
                     <SideBar />
 
                     <main
@@ -127,4 +128,8 @@ import Footer from "@/Components/Footer/Footer.vue";
     text-align: right;
     margin-right: 1rem
 }
+
+/* .body-background-image{
+    background-color: rgb(255, 142, 127);
+} */
 </style>

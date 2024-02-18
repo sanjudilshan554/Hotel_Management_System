@@ -10,6 +10,17 @@
 @import 'https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/css/fontawesome-iconpicker.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
 
+body {
+    background-color: #aecfda !important;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #1b0331 100%) !important;
+}
+/* .body-background-image {
+    background-image: url('@/assets/img/back.jpg');
+    background-position: center; 
+    height: 100%;
+    width: 100%;
+} */
+
 /* @tailwind base; */
 /* @tailwind components; */
 /* @tailwind utilities; */
