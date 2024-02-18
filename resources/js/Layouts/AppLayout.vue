@@ -99,6 +99,8 @@
 
                         <slot name="content" />
 
+                     
+
                         <Footer />
                     </main>
                 </div>
@@ -112,9 +114,11 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import SideBar from "@/Components/Sidebar/sidebar.vue";
 import Navbar from "@/Components/Navbar/Navbar.vue";
 import Footer from "@/Components/Footer/Footer.vue";
+
+
 </script>
 
-<style>
+<style scoped>
 
 .logout{
     display: flex;

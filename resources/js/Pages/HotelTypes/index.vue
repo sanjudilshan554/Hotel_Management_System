@@ -199,4 +199,7 @@ import AppLayout from '@/Layouts/AppLayout.vue'
     margin-right: 5rem;
     margin-left: 5rem;
 }
+.card{
+    border-radius: 8px;
+}
 </style>

@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\HotelTab;
+use App\Http\Controllers\HotelTabController;
 use App\Http\Controllers\HotelTypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomTypeController;
@@ -24,6 +27,8 @@ Route::get("/",[HomeController::class,"index"])->name("dashboard");
 Route::prefix('hotel')->group(function () {
     Route::get("/roomtypes",[RoomTypeController::class,"index"])->name("room_types");
     Route::get("/hotel_types",[HotelTypeController::class,"index"])->name("hotel_types");
+    Route::get("/hotels",[HotelController::class,"index"])->name("hotel");
+    Route::get("/hotels/tab",[HotelTabController::class,"index"])->name("hotel_tab");
 });
 
 

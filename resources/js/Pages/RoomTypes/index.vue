@@ -136,6 +136,7 @@
                                         <td>Otto</td>
                                         <td>@mdo</td>
                                         <td>@mdo</td>
+                                        <td>@mdo</td>
                                         <td>
                                             <div class="row">
                                                 <!-- Button trigger modal -->
@@ -192,5 +193,9 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 .main-section {
     margin-right: 5rem;
     margin-left: 5rem;
+}
+
+.card{
+    border-radius: 8px;
 }
 </style>
