@@ -24,11 +24,21 @@ use Inertia\Inertia;
 
 Route::get("/",[HomeController::class,"index"])->name("dashboard");
 
+
 Route::prefix('hotel')->group(function () {
-    Route::get("/roomtypes",[RoomTypeController::class,"index"])->name("room_types");
-    Route::get("/hotel_types",[HotelTypeController::class,"index"])->name("hotel_types");
     Route::get("/hotels",[HotelController::class,"index"])->name("hotel");
     Route::get("/hotels/tab",[HotelTabController::class,"index"])->name("hotel_tab");
+});
+
+Route::prefix('room_types')->group(function () {
+    Route::get("/roomtypes",[RoomTypeController::class,"index"])->name("room_types");
+});
+
+Route::prefix('hotel_types')->group(function () {
+    Route::get("/hotel_types",[HotelTypeController::class,"index"])->name("hotel_types");
+    Route::post("/hotel_types/store",[HotelTypeController::class,"store"])->name("hotel_types.store");
+    Route::get("/hotel_types/all",[HotelTypeController::class,"all"])->name("hotel_types.all");
+    Route::delete("/hotel_types/delete/{id}",[HotelTypeController::class,"delete"])->name("hotel_types.delete");
 });
 
 
