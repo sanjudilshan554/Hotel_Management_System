@@ -18,6 +18,10 @@
   </nav>
 </template>
 
-<script></script>
+<script>
 
-<style></style>
+</script>
+
+<style>
+
+</style>

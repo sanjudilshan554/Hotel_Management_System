@@ -2,7 +2,7 @@
     <div>
         <!DOCTYPE html>
         <html lang="en">
-            <Head>
+            <Head :title="title ? title : 'Admin'">
                 <meta charset="utf-8" />
                 <meta
                     name="viewport"
@@ -91,6 +91,12 @@
                     >
                         <Navbar />
 
+                        <div class="logout">
+                            <AuthenticatedLayout class=""/>
+                        </div>
+                        
+                        <slot name="header"/>
+
                         <slot name="content" />
 
                         <Footer />
@@ -102,13 +108,19 @@
 </template>
 
 <script setup>
-
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import SideBar from "@/Components/Sidebar/sidebar.vue";
 import Navbar from "@/Components/Navbar/Navbar.vue";
 import Footer from "@/Components/Footer/Footer.vue";
-
 </script>
 
 <style>
 
+.logout{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    text-align: right;
+    margin-right: 1rem
+}
 </style>

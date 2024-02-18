@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HotelTypeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoomTypeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,6 +21,21 @@ use Inertia\Inertia;
 
 Route::get("/",[HomeController::class,"index"])->name("dashboard");
 
+Route::prefix('hotel')->group(function () {
+    Route::get("/roomtypes",[RoomTypeController::class,"index"])->name("room_types");
+    Route::get("/hotel_types",[HotelTypeController::class,"index"])->name("hotel_types");
+});
+
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard/index');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
 //         'canLogin' => Route::has('login'),
@@ -28,9 +45,7 @@ Route::get("/",[HomeController::class,"index"])->name("dashboard");
 //     ]);
 // });
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,4 +53,4 @@ Route::get("/",[HomeController::class,"index"])->name("dashboard");
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-// require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';

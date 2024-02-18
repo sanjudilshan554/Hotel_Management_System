@@ -14,6 +14,13 @@
     <div class="collapse navbar-collapse w-auto h-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
+          <Link  :href="route('dashboard')" class="nav-link active"
+            aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+            <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+              <i class="ni ni-shop text-primary text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboards</span>
+          </Link>
           <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link" aria-controls="applicationsExamples"
             role="button" aria-expanded="false">
             <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
@@ -24,20 +31,20 @@
           <div class="collapse" id="applicationsExamples">
             <ul class="nav ms-4">
               <li class="nav-item">
-                <a class="nav-link" href="../../pages/applications/kanban.html">
-                  <span class="sidenav-mini-icon"> K </span>
-                  <span class="sidenav-normal">
-                    Hotel Types
-                  </span>
-                </a>
+                <Link class="nav-link" :href="route('hotel_types')">
+                <span class="sidenav-mini-icon"> K </span>
+                <span class="sidenav-normal">
+                  Hotel Types
+                </span>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../../pages/applications/wizard.html">
-                  <span class="sidenav-mini-icon"> W </span>
-                  <span class="sidenav-normal">
-                    Room Types
-                  </span>
-                </a>
+                <Link class="nav-link" :href="route('room_types')">
+                <span class="sidenav-mini-icon"> W </span>
+                <span class="sidenav-normal">
+                  Room Types
+                </span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -66,6 +73,8 @@
   </aside>
 </template>
 
-<script></script>
+<script setup>
+import { Link } from '@inertiajs/vue3'
+</script>
 
 <style></style>

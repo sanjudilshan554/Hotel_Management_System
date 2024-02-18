@@ -128,6 +128,7 @@
 
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 </script>
 
 <style></style>
