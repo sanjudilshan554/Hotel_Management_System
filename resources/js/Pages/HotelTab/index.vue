@@ -28,7 +28,7 @@
                                     </label>
                                     <label for="blog" class="blog">
                                        <i class="fa-solid fa-image"></i>
-                                        <span class="title">Blog</span>
+                                        <span class="title">Images</span>
                                     </label>
                                     <div class="slider"></div>
                                     
@@ -40,6 +40,7 @@
                                         <div class="title information-card-title">Hotel information</div>
                                         <div class="card ">
                                             <form>
+                                                <input type="hidden">
                                                 <div class="row">
                                                     <div class="row ">
                                                         <div class="col m-1">
@@ -47,9 +48,9 @@
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Hotel
                                                                     Name</label>
-                                                                <input type="email" class="form-control input-text"
+                                                                <input type="email" class="form-control input-text" v-model="hotelData.name" disabled
                                                                     id="exampleFormControlInput1"
-                                                                    placeholder="name@example.com">
+                                                                    placeholder="Mount Lavaina">
                                                             </div>
                                                         </div>
                                                         <div class="col m-1">
@@ -57,33 +58,43 @@
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Category</label>
 
-                                                                <select class="form-select  input-text primary"
+                                                                <select class="form-select  input-text primary" v-model="hotelData.category" disabled
                                                                     aria-label="Default select example">
-                                                                    <option value="1">Luxury Hotels</option>
-                                                                    <option value="2">Mid-Range Hotels</option>
-                                                                    <option value="3">Budget Hotels</option>
+                                                                    <option value="Luxury Hotels">Luxury Hotels</option>
+                                                                    <option value="Mid-Range Hotels">Mid-Range Hotels</option>
+                                                                    <option value="Budget Hotel">Budget Hotels</option>
                                                                 </select>
                                                             </div>
 
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col m-1">
+                                                        <div class="col-10 m-1">
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Address</label>
-                                                                <input type="email" class="form-control input-text"
+                                                                <input type="email" class="form-control input-text" v-model="hotelData.address"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
                                                         </div>
+                                                        <div class="col-1 m-1">
+                                                            <div class="mb-2">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label">Postal code</label>
+                                                                <input type="text" class="form-control input-text" v-model="hotelData.postel_code"
+                                                                    id="exampleFormControlInput1"
+                                                                    placeholder="70200">
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                     <div class="row">
                                                         <div class="col m-1">
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Website</label>
-                                                                <input type="email" class="form-control input-text"
+                                                                <input type="email" class="form-control input-text" v-model="hotelData.website"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -94,7 +105,7 @@
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Contact number</label>
-                                                                <input type="email" class="form-control input-text"
+                                                                <input type="email" class="form-control input-text" v-model="hotelData.contact_number"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -102,10 +113,13 @@
                                                         <div class="col m-1">
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1"
-                                                                    class="form-label">Latitude and Longitude</label>
-                                                                <input type="email" class="form-control input-text"
-                                                                    id="exampleFormControlInput1"
-                                                                    placeholder="name@example.com">
+                                                                    class="form-label">Location</label>
+                                                                    <select class="form-select input-text" aria-label="Default select example" v-model="hotelData.location" disabled>
+                                                                        <option value="Location 1">Location 1</option>
+                                                                        <option value="Location 2">Location 2</option>
+                                                                        <option value="Location 3">Location 3</option>
+                                                                        <option value="Location 4">Location 4</option>
+                                                                    </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -114,7 +128,7 @@
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Check-in and Check-out Times</label>
-                                                                <input type="email" class="form-control input-text"
+                                                                <input type="email" class="form-control input-text" v-model="hotelData.check_in_out_process"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -122,13 +136,10 @@
                                                         <div class="col m-1">
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1"
-                                                                    class="form-label">Room type</label>
-                                                                <select class="form-select  input-text primary"
-                                                                    aria-label="Default select example">
-                                                                    <option value="1">Luxury Hotels</option>
-                                                                    <option value="2">Mid-Range Hotels</option>
-                                                                    <option value="3">Budget Hotels</option>
-                                                                </select>
+                                                                    class="form-label">email</label>
+                                                                    <input type="email" class="form-control input-text" v-model="hotelData.email"
+                                                                    id="exampleFormControlInput1"
+                                                                    placeholder="name@example.com">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -137,7 +148,7 @@
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Description</label>
-                                                                <input type="email" class="form-control input-text"
+                                                                <input type="email" class="form-control input-text" v-model="hotelData.description"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -145,10 +156,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="submit-button">
-                                                    <button type="submit"
-                                                        class="btn btn-secondary submit-button">Reset</button>
-                                                    <button type="submit"
-                                                        class="btn btn-success submit-button">Submit</button>
+                                                    <button
+                                                        class="btn btn-secondary submit-button" @click.prevent="resetData()">Reset</button>
+
+                                                    <button @click.prevent="createHotel()"
+                                                        class="btn btn-success submit-button">Submit</button> 
                                                 </div>
                                             </form>
                                         </div>
@@ -174,7 +186,6 @@
                                                         <a href="#" class="btn btn-primary">Go somewhere</a>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -183,15 +194,61 @@
                         </div>
                     </div>
                 </section>
-
             </section>
         </template>
     </AppLayout>
 </template>
 
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue'
+import AppLayout from '@/Layouts/AppLayout.vue';
+import { ref,onMounted} from 'vue';
+import axios from 'axios';
 
+const getHotelEntryData = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const hotelEntryParam = urlParams.get('hotel_entry');
+    if (hotelEntryParam) {
+        const hotelEntryData = JSON.parse(decodeURIComponent(hotelEntryParam));
+        hotelData.value.hotel_entry_id = hotelEntryData.id;
+        hotelData.value.name = hotelEntryData.name;
+        hotelData.value.category = hotelEntryData.category;
+        hotelData.value.location = hotelEntryData.location;
+    }
+}
+
+const hotelData = ref({
+        name:'',
+        category:'',
+        address:'',
+        postel_code:'',
+        website:'',
+        contact_number:'',
+        location:'',
+        check_in_out_process:'',
+        email:'',
+        description:'',
+        hotel_entry_id:'',
+});
+
+const resetData = () => {
+        hotelData.value.address='',
+        hotelData.value.postel_code='',
+        hotelData.value.website='',
+        hotelData.value.contact_number='',
+        hotelData.value.check_in_out_process='',
+        hotelData.value.email='',
+        hotelData.value.description=''
+}
+
+const createHotel = async () => {
+    try{
+        const response= await axios.post(route('hotel_tab.store'),hotelData.value);
+    }catch(error){
+        console.log(error);
+    }
+}
+
+onMounted(getHotelEntryData);
 
 </script>
 
@@ -206,7 +263,7 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 
 
 ::selection {
-    background: #6d50e2;
+    background: #736f83;
     color: #ffffff;
 }
 
@@ -256,7 +313,7 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 }
 
 .content .list label:hover {
-    color: #421ed3;
+    color: #236d01;
 }
 
 .content .slider {
@@ -266,7 +323,7 @@ import AppLayout from '@/Layouts/AppLayout.vue'
     height: 60px;
     width: 100%;
     border-radius: 5px;
-    background: #6d50e2;
+    background: #2fc260;
     transition: all 0.4s ease;
 }
 

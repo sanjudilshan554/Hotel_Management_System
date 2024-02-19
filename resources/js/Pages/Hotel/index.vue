@@ -90,7 +90,6 @@
                             </table>
                         </div>
                         </div>
-                       
                     </div>
                 </section>
             </section>
@@ -109,25 +108,28 @@ const HotelEntry = ref({
     location:'',
 });
 
-
 const createHotelEntry = async () => {
-    try{
+    try {
         const response = await axios.post(route('hotel.entry.store'), HotelEntry.value);
-        const hotel_entry=response.data.hotel_entry;
-        if(hotel_entry){
-            window.location.href = '/hotel/tab/';
-        }else{
+        const hotel_entry = response.data.hotel_entry;
+        if (hotel_entry) {
+
+            const params = new URLSearchParams();
+            params.append('hotel_entry', JSON.stringify(hotel_entry));
+
+            window.location.href = '/hotel/tab/?' + params.toString();
+        } else {
             console.log('no data');
         }
-    }catch(error){
-        console.log('Error:',error);
+    } catch (error) {
+        console.log('Error:', error);
     }
 }
 
-    
 
 
 </script>
+
 <style scoped>
 .header {
     color: #554646;

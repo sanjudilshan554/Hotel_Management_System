@@ -28,6 +28,7 @@ Route::get("/",[HomeController::class,"index"])->name("dashboard");
 
 Route::prefix('hotel/tab')->group(function () {
     Route::get("/",[HotelController::class,"index"])->name("hotel_tab");
+    Route::post("/store",[HotelController::class,"store"])->name("hotel_tab.store");
 });
 
 Route::prefix('hotel/entry')->group(function () {
