@@ -27,7 +27,7 @@ class RoomTypeController extends Controller
     }
 
     public function find($id){
-        $response['hotel_types']=RoomTypeFacade::find($id);
+        $response['room_types']=RoomTypeFacade::find($id);
         return $response;
     }
 

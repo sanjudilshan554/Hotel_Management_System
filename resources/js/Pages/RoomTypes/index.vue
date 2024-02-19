@@ -21,12 +21,13 @@
                                         <div class="from-content">
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Name</label>
-                                                <input class="form-control" type="text" placeholder="if any extra info" 
-                                                    aria-label="default input example">
+                                                <input class="form-control" type="text" placeholder="if any extra info"
+                                                    v-model="RoomTypesFind.name" aria-label="default input example">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Price Range</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    v-model="RoomTypesFind.price_range">
                                                     <option value="1">Rs.4000 - 8000 per day</option>
                                                     <option value="2">Rs.10000 - 30000 per day</option>
                                                     <option value="3">Rs.30000 - 50000 per day</option>
@@ -35,19 +36,29 @@
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Max Occupancy</label>
                                                 <input class="form-control" type="text" placeholder="4 - 6"
-                                                    aria-label="default input example">
+                                                    v-model="RoomTypesFind.occupancy" aria-label="default input example">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword1" class="form-label">Bed
+                                                    Configuration</label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    v-model="RoomTypesFind.bed_configuration">
+                                                    <option value="1">1 King. 2Twins</option>
+                                                    <option value="2">1 Queen</option>
+                                                    <option value="3">1King, 1Twin</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Extra</label>
                                                 <input class="form-control" type="text" placeholder="if any extra info"
-                                                    aria-label="default input example">
+                                                    v-model="RoomTypesFind.extra" aria-label="default input example">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Add</button>
+                                        <button type="submit" class="btn btn-primary" @click.prevent="update(RoomTypesFind.id)">Add</button>
                                     </div>
                                 </form>
                             </div>
@@ -64,15 +75,16 @@
                                     <div class="row">
                                         <div class="col-2">
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">ame</label>
-                                                <input class="form-control" type="text" placeholder="if any extra info" v-model="RoomTypes.name"
-                                                    aria-label="default input example">
+                                                <label for="exampleInputEmail1" class="form-label">Name</label>
+                                                <input class="form-control" type="text" placeholder="if any extra info"
+                                                    v-model="RoomTypes.name" aria-label="default input example">
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Price Range</label>
-                                                <select class="form-select" aria-label="Default select example" v-model="RoomTypes.price_range">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    v-model="RoomTypes.price_range">
                                                     <option value="1">Rs.4000 - 8000 per night</option>
                                                     <option value="2">Rs.10000 - 30000 per night</option>
                                                     <option value="3">Rs.30000 - 50000 per night</option>
@@ -82,14 +94,16 @@
                                         <div class="col-1">
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Occupancy</label>
-                                                <input class="form-control" type="text" placeholder="4 - 6" v-model="RoomTypes.occupancy"
-                                                    aria-label="default input example">
+                                                <input class="form-control" type="text" placeholder="4 - 6"
+                                                    v-model="RoomTypes.occupancy" aria-label="default input example">
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Bed Configuration</label>
-                                                <select class="form-select" aria-label="Default select example" v-model="RoomTypes.bed_configuration">
+                                                <label for="exampleInputPassword1" class="form-label">Bed
+                                                    Configuration</label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    v-model="RoomTypes.bed_configuration">
                                                     <option value="1">1 King. 2Twins</option>
                                                     <option value="2">1 Queen</option>
                                                     <option value="3">1King, 1Twin</option>
@@ -99,14 +113,15 @@
                                         <div class="col-3">
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Extra</label>
-                                                <input class="form-control" type="text" placeholder="if any extra info" v-model="RoomTypes.extra"
-                                                    aria-label="default input example">
+                                                <input class="form-control" type="text" placeholder="if any extra info"
+                                                    v-model="RoomTypes.extra" aria-label="default input example">
                                             </div>
                                         </div>
                                         <div class="col-1">
                                             <div class="mt-1">
                                                 <label for="exampleInputPassword1" class="form-label"></label>
-                                                <button type="submit" class="form-control btn btn-success add-btn" @click.prevent="createRoomTypes()">Add</button>
+                                                <button type="submit" class="form-control btn btn-success add-btn"
+                                                    @click.prevent="createRoomTypes()">Add</button>
                                             </div>
                                         </div>
                                     </div>
@@ -126,22 +141,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="value in RoomTypesData">
+                                    <tr v-for="(value, key) in RoomTypesData" :key="key">
+                                        <td>1</td>
                                         <td>{{ value.name }}</td>
                                         <td>{{ value.price_range }}</td>
                                         <td>{{ value.occupancy }}</td>
                                         <td>{{ value.bed_configuration }}</td>
                                         <td>{{ value.extra }}</td>
-                                        <td>{{ value.name }}</td>
                                         <td>
                                             <div class="row">
                                                 <!-- Button trigger modal -->
                                                 <div class="action-buttons">
                                                     <button class="action-single-button fa-solid fa-pencil edit-button"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        @click.prevent="find(value.id)" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal">
                                                     </button>
                                                     <button
-                                                        class="action-single-button action-button fa-solid fa-trash delete-button" @click.prevent="deleteRoomType(value.id)">
+                                                        class="action-single-button action-button fa-solid fa-trash delete-button"
+                                                        @click.prevent="deleteRoomType(value.id)">
                                                     </button>
                                                 </div>
                                             </div>
@@ -160,46 +177,55 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
 import axios from 'axios';
-import { ref,onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const RoomTypes = ref({
     name: '',
     price_range: '',
     occupancy: '',
     bed_configuration: '',
-    extra:'',
+    extra: '',
 });
 
-const RoomTypesData= ref (null);
+const RoomTypesFind = ref({
+    id:'',
+    name: '',
+    price_range: '',
+    occupancy: '',
+    bed_configuration: '',
+    extra: '',
+});
+
+const RoomTypesData = ref(null);
 
 const createRoomTypes = async () => {
-    try{
-        const response = await axios.post(route('room_types.store'),RoomTypes.value);
+    try {
+        const response = await axios.post(route('room_types.store'), RoomTypes.value);
         getAll();
         resetData();
-    }catch(error){
-        console.log('Error:',error);
+    } catch (error) {
+        console.log('Error:', error);
     }
 }
 
 const getAll = async () => {
-    try{
+    try {
         const response = await axios.get(route('room_types.all'));
-        RoomTypesData.value=response.data.room_types;
-    }catch(error){
-        console.log('Error:',error);
+        RoomTypesData.value = response.data.room_types;
+    } catch (error) {
+        console.log('Error:', error);
     }
 }
 
 const deleteRoomType = async (id) => {
-    try{
-        const response= await axios.delete(route('room_types.delete',id));
+    try {
+        const response = await axios.delete(route('room_types.delete', id));
         getAll();
         console.log(response.data);
-    }catch(error){
-        console.log('Eroor:',error);
+    } catch (error) {
+        console.log('Eroor:', error);
     }
-} 
+}
 
 const resetData = () => {
     RoomTypes.value = {
@@ -210,6 +236,32 @@ const resetData = () => {
         extra: '',
     };
 }
+
+const find = async (id) => {
+    try {
+        const response = await axios.get(route('room_types.find', id));
+        RoomTypesFind.value = response.data.room_types;
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+
+const update = async (id) => {
+    try {
+        console.log(id);
+        const updateFields = {
+            name: RoomTypesFind.value.name,
+            price_range: RoomTypesFind.value.price_range,
+            occupancy: RoomTypesFind.value.occupancy,
+            bed_configuration: RoomTypesFind.value.bed_configuration,
+            extra: RoomTypesFind.value.extra,
+        }
+        const response = await axios.post(route('room_types.update', id), updateFields);
+        getAll();
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 onMounted(getAll);
 </script>
@@ -242,7 +294,6 @@ onMounted(getAll);
     margin-left: 5rem;
 }
 
-.card{
+.card {
     border-radius: 8px;
-}
-</style>
+}</style>
