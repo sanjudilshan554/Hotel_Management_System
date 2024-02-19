@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelEntryConroller;
+use App\Http\Controllers\HotelImagesController;
 use App\Http\Controllers\HotelTab;
 use App\Http\Controllers\HotelTabController;
 use App\Http\Controllers\HotelTypeController;
@@ -30,6 +31,11 @@ Route::prefix('hotel/tab')->group(function () {
     Route::get("/",[HotelController::class,"index"])->name("hotel_tab");
     Route::post("/store",[HotelController::class,"store"])->name("hotel_tab.store");
 });
+
+Route::prefix('hotel/images')->group(function () {
+    Route::post("/",[HotelImagesController::class,"store"])->name("hotel_image");
+});
+
 
 Route::prefix('hotel/entry')->group(function () {
     Route::get("/",[HotelEntryConroller::class,"index"])->name("hotel.entry");

@@ -179,9 +179,20 @@
                                     <!-- hotel image -->
 
                                     <div class="blog text section field">
-                                        <div class="title information-card-title ">Hotel images</div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="title information-card-title ">Hotel images</div>
+                                            </div>
+                                            <div class="col pt-2 image-header">
+                                                <div class="fa-regular fa-file-image image-upload">
+                                                    <input type="file" class="form-control" id="fileInput"
+                                                        @change="onImageChange">
+                                                </div>
+                                                <button @click.prevent="createHotelImage">Submit Image</button>
+                                            </div>
+                                        </div>
                                         <div class="image-setup image-section">
-                                            
+
                                             <div class="card  image-section" style="width: 18rem;">
                                                 <img src="" class="card-img-top" alt="...">
                                                 <div class="card-body">
@@ -201,79 +212,7 @@
                                                     <a href="#" class="btn btn-primary">Go somewhere</a>
                                                 </div>
                                             </div>
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
 
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -317,6 +256,12 @@ const hotelData = ref({
     hotel_entry_id: '',
 });
 
+const hotelImageData = ref({
+    status: '',
+    image: '',
+    hotel_id: '',
+});
+
 const resetData = () => {
     hotelData.value.address = '',
         hotelData.value.postel_code = '',
@@ -330,8 +275,40 @@ const resetData = () => {
 const createHotel = async () => {
     try {
         const response = await axios.post(route('hotel_tab.store'), hotelData.value);
+        console.log(response);
+        hotelImageData.value.hotel_id = response.data.hotel.id;
+        console.log(hotelImageData.value.hotel_id);
+
     } catch (error) {
         console.log(error);
+    }
+}
+
+const createHotelImage = async () => {
+    try {
+        const formData = new FormData();
+        formData.append('image', hotelImageData.value.image);
+        formData.append('hotel_id', hotelImageData.value.hotel_id);
+        const response = await axios.post(route('hotel_image'), formData);
+        console.log(response);
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+const onImageChange = (e) => {
+    console.log(e.target.files[0]);
+    hotelImageData.value.image = e.target.files[0];
+}
+
+const selectImage = () => {
+    document.getElementById('fileInput').click();
+}
+
+const pickFile = () => {
+    let input = document.getElementById('fileInput');
+    let file = input.files;
+    if (file && file[0]) {
+        hotelImageData.value.image = file[0];
     }
 }
 
@@ -342,9 +319,37 @@ onMounted(getHotelEntryData);
 <style scoped>
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css";
 
+.image-header {
+    align-items: right;
+    display: flex;
+    justify-content: right;
+    padding-right: 3vh;
+}
+
+.image-button {
+    padding-top: 1vh;
+    padding: 1vh;
+    color: black;
+}
+
+.image-button:hover {
+    padding: 1vh;
+    background: #2fc260;
+    color: rgb(0, 0, 0);
+}
+
 .back {
     background-color: transparent;
     box-shadow: none;
+}
+
+.image-upload {
+    margin: 1vh;
+
+}
+
+.image-upload:hover {
+    font-size: large;
 }
 
 .field {
