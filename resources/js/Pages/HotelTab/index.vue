@@ -1,7 +1,7 @@
 <template>
     <AppLayout title="Hotel Types">
         <template #content>
-            <section class="main-section mt-1">
+            <section class="main-section">
                 <section class="add-new-modal-section">
                     <div class="">
                         <div class="sub-header">
@@ -10,28 +10,28 @@
                                 <h1 class="text-left sub-header-text">Hotel Management</h1>
                             </div>
                         </div>
-                        <h1 class="text-left header">Hotel Types</h1>
+                        <h1 class="text-left header">Hotels</h1>
                     </div>
                 </section>
 
-                <section class="mt-4">
-                    <div class="card ">
+                <section class="mt-4 ">
+                    <div class="card back">
                         <div class="">
                             <div class="content m-2">
                                 <input type="radio" name="slider" checked id="home">
                                 <input type="radio" name="slider" id="blog">
-                                
+
                                 <div class="list">
                                     <label for="home" class="home">
                                         <i class="fa-solid fa-hotel"></i>
                                         <span class="title">Hotel</span>
                                     </label>
                                     <label for="blog" class="blog">
-                                       <i class="fa-solid fa-image"></i>
+                                        <i class="fa-solid fa-image"></i>
                                         <span class="title">Images</span>
                                     </label>
                                     <div class="slider"></div>
-                                    
+
                                 </div>
 
                                 <!-- hotel information -->
@@ -48,7 +48,8 @@
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Hotel
                                                                     Name</label>
-                                                                <input type="email" class="form-control input-text" v-model="hotelData.name" disabled
+                                                                <input type="email" class="form-control input-text"
+                                                                    v-model="hotelData.name" disabled
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="Mount Lavaina">
                                                             </div>
@@ -58,10 +59,12 @@
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Category</label>
 
-                                                                <select class="form-select  input-text primary" v-model="hotelData.category" disabled
+                                                                <select class="form-select  input-text primary"
+                                                                    v-model="hotelData.category" disabled
                                                                     aria-label="Default select example">
                                                                     <option value="Luxury Hotels">Luxury Hotels</option>
-                                                                    <option value="Mid-Range Hotels">Mid-Range Hotels</option>
+                                                                    <option value="Mid-Range Hotels">Mid-Range Hotels
+                                                                    </option>
                                                                     <option value="Budget Hotel">Budget Hotels</option>
                                                                 </select>
                                                             </div>
@@ -73,7 +76,8 @@
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Address</label>
-                                                                <input type="email" class="form-control input-text" v-model="hotelData.address"
+                                                                <input type="email" class="form-control input-text"
+                                                                    v-model="hotelData.address"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -82,9 +86,9 @@
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Postal code</label>
-                                                                <input type="text" class="form-control input-text" v-model="hotelData.postel_code"
-                                                                    id="exampleFormControlInput1"
-                                                                    placeholder="70200">
+                                                                <input type="text" class="form-control input-text"
+                                                                    v-model="hotelData.postel_code"
+                                                                    id="exampleFormControlInput1" placeholder="70200">
                                                             </div>
                                                         </div>
 
@@ -94,7 +98,8 @@
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Website</label>
-                                                                <input type="email" class="form-control input-text" v-model="hotelData.website"
+                                                                <input type="email" class="form-control input-text"
+                                                                    v-model="hotelData.website"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -105,7 +110,8 @@
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Contact number</label>
-                                                                <input type="email" class="form-control input-text" v-model="hotelData.contact_number"
+                                                                <input type="email" class="form-control input-text"
+                                                                    v-model="hotelData.contact_number"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -114,12 +120,14 @@
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Location</label>
-                                                                    <select class="form-select input-text" aria-label="Default select example" v-model="hotelData.location" disabled>
-                                                                        <option value="Location 1">Location 1</option>
-                                                                        <option value="Location 2">Location 2</option>
-                                                                        <option value="Location 3">Location 3</option>
-                                                                        <option value="Location 4">Location 4</option>
-                                                                    </select>
+                                                                <select class="form-select input-text"
+                                                                    aria-label="Default select example"
+                                                                    v-model="hotelData.location" disabled>
+                                                                    <option value="Location 1">Location 1</option>
+                                                                    <option value="Location 2">Location 2</option>
+                                                                    <option value="Location 3">Location 3</option>
+                                                                    <option value="Location 4">Location 4</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -128,7 +136,8 @@
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Check-in and Check-out Times</label>
-                                                                <input type="email" class="form-control input-text" v-model="hotelData.check_in_out_process"
+                                                                <input type="email" class="form-control input-text"
+                                                                    v-model="hotelData.check_in_out_process"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -137,8 +146,8 @@
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">email</label>
-                                                                    <input type="email" class="form-control input-text" v-model="hotelData.email"
-                                                                    id="exampleFormControlInput1"
+                                                                <input type="email" class="form-control input-text"
+                                                                    v-model="hotelData.email" id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
                                                         </div>
@@ -148,7 +157,8 @@
                                                             <div class="mb-2">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Description</label>
-                                                                <input type="email" class="form-control input-text" v-model="hotelData.description"
+                                                                <input type="email" class="form-control input-text"
+                                                                    v-model="hotelData.description"
                                                                     id="exampleFormControlInput1"
                                                                     placeholder="name@example.com">
                                                             </div>
@@ -156,35 +166,112 @@
                                                     </div>
                                                 </div>
                                                 <div class="submit-button">
-                                                    <button
-                                                        class="btn btn-secondary submit-button" @click.prevent="resetData()">Reset</button>
+                                                    <button class="btn btn-secondary submit-button"
+                                                        @click.prevent="resetData()">Reset</button>
 
                                                     <button @click.prevent="createHotel()"
-                                                        class="btn btn-success submit-button">Submit</button> 
+                                                        class="btn btn-success submit-button">Submit</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
 
-                                    <div class="blog text section">
-                                        <div class="title information-card-title">Hotel images</div>
-                                        <div class="card imageflow">
-                                            <div class="overflow-auto" style="max-height: 300px;">
+                                    <!-- hotel image -->
 
-                                                <div class="card imgcard" style="width: 18rem;">
-       
-
-                                                    
+                                    <div class="blog text section field">
+                                        <div class="title information-card-title ">Hotel images</div>
+                                        <div class="image-setup image-section">
+                                            
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                                 </div>
-                                                <div class="card" style="width: 18rem;">
-                                                    <img src="" class="card-img-top" alt="...">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Card title</h5>
-                                                        <p class="card-text">Some quick example text to build on the card
-                                                            title
-                                                            and make up the bulk of the card's content.</p>
-                                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                    </div>
+                                            </div>
+
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+                                            <div class="card  image-section" style="width: 18rem;">
+                                                <img src="" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title
+                                                        and make up the bulk of the card's content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +288,7 @@
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { ref,onMounted} from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 const getHotelEntryData = () => {
@@ -217,33 +304,33 @@ const getHotelEntryData = () => {
 }
 
 const hotelData = ref({
-        name:'',
-        category:'',
-        address:'',
-        postel_code:'',
-        website:'',
-        contact_number:'',
-        location:'',
-        check_in_out_process:'',
-        email:'',
-        description:'',
-        hotel_entry_id:'',
+    name: '',
+    category: '',
+    address: '',
+    postel_code: '',
+    website: '',
+    contact_number: '',
+    location: '',
+    check_in_out_process: '',
+    email: '',
+    description: '',
+    hotel_entry_id: '',
 });
 
 const resetData = () => {
-        hotelData.value.address='',
-        hotelData.value.postel_code='',
-        hotelData.value.website='',
-        hotelData.value.contact_number='',
-        hotelData.value.check_in_out_process='',
-        hotelData.value.email='',
-        hotelData.value.description=''
+    hotelData.value.address = '',
+        hotelData.value.postel_code = '',
+        hotelData.value.website = '',
+        hotelData.value.contact_number = '',
+        hotelData.value.check_in_out_process = '',
+        hotelData.value.email = '',
+        hotelData.value.description = ''
 }
 
 const createHotel = async () => {
-    try{
-        const response= await axios.post(route('hotel_tab.store'),hotelData.value);
-    }catch(error){
+    try {
+        const response = await axios.post(route('hotel_tab.store'), hotelData.value);
+    } catch (error) {
         console.log(error);
     }
 }
@@ -255,6 +342,25 @@ onMounted(getHotelEntryData);
 <style scoped>
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css";
 
+.back {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.field {
+    overflow: auto;
+}
+
+.image-section {
+    background-color: white;
+}
+
+.image-section {
+    float: left;
+    overflow: hidden;
+    margin: 2vh;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -263,7 +369,7 @@ onMounted(getHotelEntryData);
 
 
 ::selection {
-    background: #736f83;
+    background: #008bad;
     color: #ffffff;
 }
 
@@ -309,7 +415,7 @@ onMounted(getHotelEntryData);
 #help:checked~.list label.help,
 #code:checked~.list label.code,
 #about:checked~.list label.about {
-    color: #fff;
+    color: #ffffff;
 }
 
 .content .list label:hover {
@@ -444,23 +550,16 @@ onMounted(getHotelEntryData);
 }
 
 .section {
-    max-width: 100vh;
-    max-height: 65vh;
+    max-width: 130vh;
+    max-height: 70vh;
 
 }
 
 .input-text {
     font-size: large;
-    padding: 5px;
+    padding: 4px;
 }
 
-.imageflow {
-
-    max-width: 1200px;
-
-    display: flex;
-    flex-direction: row;
-}
 
 .submit-button {
     align-items: right;
@@ -470,7 +569,7 @@ onMounted(getHotelEntryData);
     margin-right: 1vh;
 }
 
-.information-card-title{
+.information-card-title {
     font-weight: bolder;
     padding-bottom: 2rem;
 }
