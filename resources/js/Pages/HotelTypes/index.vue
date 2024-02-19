@@ -28,7 +28,7 @@
                                         <div class="from-content">
 
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Hotel Type Name</label>
+                                                <label for="exampleInputEmail1" class="form-label">Name</label>
                                                 <input class="form-control" type="text" placeholder="Mount Lavinia" v-model="hotelTypes.name"
                                                     aria-label="default input example">
                                             </div>
@@ -79,16 +79,16 @@
                                     <div class="modal-body">
                                         <div class="from-content">
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Hotel Type Name</label>
+                                                <label for="exampleInputEmail1" class="form-label">Name</label>
                                                 <input class="form-control" type="text" placeholder="4 - 6" v-model="hotelTypes.name"
                                                     aria-label="default input example">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Price Range</label>
                                                 <select class="form-select" aria-label="Default select example" v-model="hotelTypes.price_range">
-                                                    <option value="1">$50 - $100 per night</option>
-                                                    <option value="2">$100 - $200 per night</option>
-                                                    <option value="3">$150 - $300 per night</option>
+                                                    <option value="1">Rs.40000 - 80000 per day</option>
+                                                    <option value="2">Rs.100000 - 300000 per day</option>
+                                                    <option value="3">Rs.300000 - 500000 per day</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
@@ -120,7 +120,7 @@
                                 <thead>
                                     <tr class="table-primary">
                                         <th scope="col">#</th>
-                                        <th scope="col">Type Name</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Price range</th>
                                         <th scope="col">Max Occupancy</th>
                                         <th scope="col">Extra</th>
@@ -131,7 +131,17 @@
                                     <tr v-for="(value, key) in hotelTypeData" :key="key">
                                         <td>{{ key }}</td>
                                         <td>{{ value.name }}</td>
-                                        <td>{{ value.price_range }}</td>
+                                        <td> 
+                                           <div v-if="value.price_range == 1">
+                                            Rs.40000 - 80000 per day
+                                            </div>
+                                            <div v-else-if="value.price_range == 2">
+                                                Rs.100000 - 300000 per day
+                                            </div>
+                                            <div v-else-if="value.price_range == 2">
+                                                Rs.300000 - 500000 per day
+                                            </div>
+                                        </td>
                                         <td>{{ value.max_occupancy }}</td>
                                         <td>{{ value.extra }}</td>
                                         

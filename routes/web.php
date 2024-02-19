@@ -32,6 +32,9 @@ Route::prefix('hotel')->group(function () {
 
 Route::prefix('room_types')->group(function () {
     Route::get("/roomtypes",[RoomTypeController::class,"index"])->name("room_types");
+    Route::post("/roomtypes/store",[RoomTypeController::class,"store"])->name("room_types.store");
+    Route::get("/roomtypes/all",[RoomTypeController::class,"all"])->name("room_types.all");
+    Route::delete("/roomtypes/delete/{id}",[RoomTypeController::class,"delete"])->name("room_types.delete");
 });
 
 Route::prefix('hotel_types')->group(function () {
