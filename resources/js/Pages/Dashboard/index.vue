@@ -131,4 +131,9 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 </script>
 
-<style></style>
+<style>
+
+.card{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.692);
+}
+</style>

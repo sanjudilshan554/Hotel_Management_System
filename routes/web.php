@@ -35,6 +35,7 @@ Route::prefix('hotel/tab')->group(function () {
 Route::prefix('hotel/images')->group(function () {
     Route::post("/",[HotelImagesController::class,"store"])->name("hotel_image");
     Route::get("/all/{hotel_id}",[HotelImagesController::class,"all"])->name("hotel_image.all");
+    Route::get("/delete/{hotel_id}/{image_id}/{status}",[HotelImagesController::class,"delete"])->name("hotel_image.delete");
 });
 
 

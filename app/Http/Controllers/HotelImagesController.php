@@ -25,4 +25,10 @@ class HotelImagesController extends Controller
         $response['hotel_image']=HotelImageFacade::all($id);
         return $response;
     }
+
+    public function delete($hotelId,$imageId,$status){
+  
+        $response=HotelImageFacade::delete($hotelId,$imageId,$status);
+        return $response;
+    }
 }

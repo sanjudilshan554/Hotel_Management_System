@@ -38,8 +38,8 @@
                                 <div class="text-content mt-2">
                                     <div class="home text section">
                                         <div class="title information-card-title">Hotel information</div>
-                                        <div class="card ">
-                                            <form>
+                                        <div class="card hotel-card">
+                                            <form class="form-setup">
                                                 <input type="hidden">
                                                 <div class="row">
                                                     <div class="row ">
@@ -183,22 +183,25 @@
                                                 <div class="title information-card-title ">Hotel images</div>
                                             </div>
                                             <div class="col pt-2 image-header">
-                                                <div class="fa-regular fa-file-image image-upload">
-                                                    <input type="file" class="form-control" id="fileInput"
+                                                <div class="image upload">
+                                                    <input type="file" class="form-control file" id="fileInput" 
                                                         @change="onImageChange">
+                                                    <button @click.prevent="createHotelImage" class="btn btn-primary image-upload ">Upload</button>
                                                 </div>
-                                                <button @click.prevent="createHotelImage">Submit Image</button>
+                                                
                                             </div>
                                         </div>
-                                        <div class="image-setup image-section" v-for="value in hotelImage">
+                                        <div class="image-setup image-section border" v-for="value in hotelImage">
 
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img :src=value.url class="card-img-top" alt="...">
+                                            <div class="card  image-section " style="width: 16rem;">
+                                                <img :src=value.url class="card-img-top" alt="dfdsfds">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                    <h5 class="card-title">Hotel name: {{ value.hotels.name}}</h5>
+                                                    <p class="card-text">Hotel category: {{ value.hotels.category }}</p>
+        
+                                                    <button class="btn btn-danger m-2 p-2" @click.prevent="deleteImage(value.hotels.id,value.id,value.status=0)">delete</button>
+
+                                                    <a href="#" class="btn btn-primary m-2 p-2" @click.prevent="vf(value.id)">make primary</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -316,12 +319,34 @@ const pickFile = () => {
     }
 }
 
+
+const deleteImage = async (HotelId, ImageId, Status) => {
+    console.log('hi');
+    try {
+        const response = await axios.get(route('hotel_image.delete', { hotel_id: HotelId, image_id: ImageId, status: Status }));
+        const hotel_id=response.data.hotel_image.hotel_id;
+        getImage(hotel_id);
+        console.log(response);
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+
 onMounted(getHotelEntryData);
 
 </script>
 
 <style scoped>
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css";
+
+.upload{
+    float: right;
+    display:flex;
+}
+
+.file{
+    background-color: #b2beb6;
+}
 
 .image-header {
     align-items: right;
@@ -349,11 +374,9 @@ onMounted(getHotelEntryData);
 
 .image-upload {
     margin: 1vh;
-
-}
-
-.image-upload:hover {
-    font-size: large;
+    border-radius: 10px;
+    padding: 1vh;
+    box-shadow: 1px 1px 2px rgb(187, 175, 175);
 }
 
 .field {
@@ -368,6 +391,12 @@ onMounted(getHotelEntryData);
     float: left;
     overflow: hidden;
     margin: 2vh;
+    
+}
+
+.border{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.74);
+    border-radius: 5px;
 }
 
 * {
@@ -507,7 +536,7 @@ onMounted(getHotelEntryData);
 }
 
 .sub-header {
-    color: #ffffff;
+    color: #2278db;
     font-size: xx-large;
     display: flex;
     justify-content: space-between;
@@ -522,7 +551,7 @@ onMounted(getHotelEntryData);
 
 .sub-header-text {
     font-size: large;
-    color: white;
+    color: #2278db;
     margin-left: 1vh;
 }
 
@@ -581,5 +610,13 @@ onMounted(getHotelEntryData);
 .information-card-title {
     font-weight: bolder;
     padding-bottom: 2rem;
+}
+
+.hotel-card {
+    box-shadow: 1px 1px 3px black;
+}
+
+.form-setup{
+    padding: 10px;
 }
 </style>

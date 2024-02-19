@@ -22,4 +22,8 @@ class Hotel extends Model
         'description',
         'hotel_entry_id',
     ];
+
+    // public function hotelImages(){
+    //     return $this->hasMany(HotelImages::class,'id','hotel')
+    // }
 }

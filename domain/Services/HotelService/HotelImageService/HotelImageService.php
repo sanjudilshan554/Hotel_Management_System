@@ -40,8 +40,20 @@ class HotelImageService{
         }
 
         public function all($id){
-           $data=$this->hotel_image->where('hotel_id',$id)->get();
-           return $data;
+            $data = $this->hotel_image->with('hotels')->where('hotel_id', $id)->get();
+            return $data;
         }
 
+        public function delete( $hotelId,$imageId,$status){
+
+            $image= $this->hotel_image->where('hotel_id',$hotelId)->get();
+            
+            if($image[0]['id'] == $imageId || $status == 1){
+                return 1;
+            }else{
+                return 2;
+                return $this->hotel_image->destroy($imageId);
+            }
+            
+        }
 }

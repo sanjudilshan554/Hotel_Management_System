@@ -14,4 +14,9 @@ class HotelImages extends Model
         'url',
         'hotel_id',
     ];
+
+    public function hotels(){
+        return $this->hasOne(Hotel::class, 'id', 'hotel_id');
+    }
+
 }

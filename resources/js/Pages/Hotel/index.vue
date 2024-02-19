@@ -30,11 +30,11 @@
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">Hotel Name</label>
                                                     <input class="form-control" type="text" placeholder="Mount Lavania" v-model="HotelEntry.name"
-                                                        aria-label="default input example">
+                                                        aria-label="default input example" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Hotel Category</label>
-                                                    <select class="form-select" aria-label="Default select example" v-model="HotelEntry.category">
+                                                    <select class="form-select" aria-label="Default select example" v-model="HotelEntry.category" required>
                                                         <option value="Luxury Hotels">Luxury Hotels</option>
                                                         <option value="Mid-Range Hotels">Mid-Range Hotels</option>
                                                         <option value="Budget Hotel">Budget Hotels</option>
@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Location</label>
-                                                        <select class="form-select" aria-label="Default select example" v-model="HotelEntry.location">
+                                                        <select class="form-select" aria-label="Default select example" v-model="HotelEntry.location" required>
                                                         <option value="Location 1">Location 1</option>
                                                         <option value="Location 2">Location 2</option>
                                                         <option value="Location 3">Location 3</option>
@@ -109,24 +109,26 @@ const HotelEntry = ref({
 });
 
 const createHotelEntry = async () => {
+    if (!HotelEntry.value.name || !HotelEntry.value.category || !HotelEntry.value.location) {
+        
+        console.log('Please full');
+        return;
+    }
+
     try {
         const response = await axios.post(route('hotel.entry.store'), HotelEntry.value);
         const hotel_entry = response.data.hotel_entry;
         if (hotel_entry) {
-
             const params = new URLSearchParams();
             params.append('hotel_entry', JSON.stringify(hotel_entry));
-
             window.location.href = '/hotel/tab/?' + params.toString();
         } else {
-            console.log('no data');
+            console.log('No data');
         }
     } catch (error) {
         console.log('Error:', error);
     }
 }
-
-
 
 </script>
 

@@ -277,4 +277,6 @@ onMounted(getAll);
 .card{
     border-radius: 8px;
 }
+
+
 </style>

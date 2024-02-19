@@ -88,7 +88,7 @@
                     <SideBar />
 
                     <main
-                        class="main-content position-relative border-radius-lg"
+                        class="main-contents position-relative border-radius-lg"
                     >
                         <Navbar />
 
@@ -129,6 +129,17 @@ import Footer from "@/Components/Footer/Footer.vue";
     margin-right: 1rem
 }
 
+.main-contents{
+    width: auto;
+
+    margin-left: 15.125rem;
+
+}
+.sidenav {
+    z-index: 1000; 
+  }
+  
+ 
 /* .body-background-image{
     background-color: rgb(255, 142, 127);
 } */
