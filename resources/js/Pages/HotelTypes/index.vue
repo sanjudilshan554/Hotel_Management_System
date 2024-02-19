@@ -71,7 +71,7 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Hotel</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit exist Hotel</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -105,8 +105,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" @click.prevent="update(hotelTypes.id)">Add</button>
+                                            data-bs-dismiss="modal">Cansel</button>
+                                        <button type="submit" class="btn btn-primary" @click.prevent="update(hotelTypes.id)">Save</button>
                                     </div>
                                 </form>
                             </div>

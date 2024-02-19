@@ -12,7 +12,7 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Room</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit room details</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -21,7 +21,7 @@
                                         <div class="from-content">
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Name</label>
-                                                <input class="form-control" type="text" placeholder="if any extra info"
+                                                <input class="form-control" type="text" placeholder="Enter room name"
                                                     v-model="RoomTypesFind.name" aria-label="default input example">
                                             </div>
                                             <div class="mb-3">
@@ -58,7 +58,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" @click.prevent="update(RoomTypesFind.id)">Add</button>
+                                        <button type="submit" class="btn btn-primary" @click.prevent="update(RoomTypesFind.id)">Save</button>
                                     </div>
                                 </form>
                             </div>

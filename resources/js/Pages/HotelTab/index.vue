@@ -177,7 +177,6 @@
                                     </div>
 
                                     <!-- hotel image -->
-
                                     <div class="blog text section field">
                                         <div class="row">
                                             <div class="col">
@@ -191,10 +190,10 @@
                                                 <button @click.prevent="createHotelImage">Submit Image</button>
                                             </div>
                                         </div>
-                                        <div class="image-setup image-section">
+                                        <div class="image-setup image-section" v-for="value in hotelImage">
 
                                             <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
+                                                <img :src=value.url class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Card title</h5>
                                                     <p class="card-text">Some quick example text to build on the card title
@@ -202,17 +201,6 @@
                                                     <a href="#" class="btn btn-primary">Go somewhere</a>
                                                 </div>
                                             </div>
-
-                                            <div class="card  image-section" style="width: 18rem;">
-                                                <img src="" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">Some quick example text to build on the card title
-                                                        and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -262,6 +250,8 @@ const hotelImageData = ref({
     hotel_id: '',
 });
 
+const hotelImage = ref ([]);
+
 const resetData = () => {
     hotelData.value.address = '',
         hotelData.value.postel_code = '',
@@ -278,9 +268,21 @@ const createHotel = async () => {
         console.log(response);
         hotelImageData.value.hotel_id = response.data.hotel.id;
         console.log(hotelImageData.value.hotel_id);
-
+        hotelImage.value= response.data.hotel_image;
     } catch (error) {
         console.log(error);
+    }
+}
+
+const getImage = async (hotel_id) => {
+    try{
+        // const hotel_id = hotelImageData.value.hotel_id;
+        // hotel_id.append('hotel_id', hotelImageData.value.hotel_id);
+        const response = await axios.get(route('hotel_image.all', hotel_id));
+        hotelImage.value=response.data.hotel_image;
+
+    }catch(error){
+        console.log('Error:',error);
     }
 }
 
@@ -290,7 +292,9 @@ const createHotelImage = async () => {
         formData.append('image', hotelImageData.value.image);
         formData.append('hotel_id', hotelImageData.value.hotel_id);
         const response = await axios.post(route('hotel_image'), formData);
-        console.log(response);
+        const hotel_id=response.data.hotel_image.hotel_id;
+        console.log(hotel_id);
+        getImage(hotel_id);
     } catch (error) {
         console.log('Error:', error);
     }
