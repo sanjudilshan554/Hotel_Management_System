@@ -14,4 +14,8 @@ class HotelEntryService{
     public function store($data){
         return $this->HotelEntryService->create($data);
     }
+
+    public function get(){
+        return $this->HotelEntryService->latest('created_at')->first();
+    }
 }

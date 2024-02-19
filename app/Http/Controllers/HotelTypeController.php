@@ -37,4 +37,9 @@ class HotelTypeController extends Controller
         return $response;
     }
 
+    public function count(){
+        $response=HotelTypeFacade::count();
+        return $response;
+    }
+
 }

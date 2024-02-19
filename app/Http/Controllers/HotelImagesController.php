@@ -31,4 +31,9 @@ class HotelImagesController extends Controller
         $response=HotelImageFacade::delete($hotelId,$imageId,$status);
         return $response;
     }
+
+    public function count(){
+        $response=HotelImageFacade::count();
+        return $response;
+    }
 }

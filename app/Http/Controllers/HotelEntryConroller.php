@@ -16,4 +16,9 @@ class HotelEntryConroller extends Controller
         $response['hotel_entry']= HotelEntryFacade::store($request->all());
         return $response;
     }
+
+    public function get(){
+        $response['hotel_entry']= HotelEntryFacade::get();
+        return $response;
+    }
 }

@@ -15,12 +15,8 @@
                                                         Total HOTEL TPYES
                                                     </p>
                                                     <h5 class="font-weight-bolder">
-                                                        $53,000
+                                                        {{ hotelTypes }}
                                                     </h5>
-                                                    <p class="mb-0">
-                                                        <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                                        since yesterday
-                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-4 text-end">
@@ -43,12 +39,8 @@
                                                         TOTAL ROOMS TYPES
                                                     </p>
                                                     <h5 class="font-weight-bolder">
-                                                        2,300
+                                                        {{ roomTypes }}
                                                     </h5>
-                                                    <p class="mb-0">
-                                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                                        since last week
-                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-4 text-end">
@@ -71,12 +63,8 @@
                                                         TOTAL HOTELS
                                                     </p>
                                                     <h5 class="font-weight-bolder">
-                                                        +3,462
+                                                        {{ hotelCount }}
                                                     </h5>
-                                                    <p class="mb-0">
-                                                        <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                                        since last quarter
-                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-4 text-end">
@@ -97,15 +85,11 @@
                                             <div class="col-8">
                                                 <div class="numbers">
                                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">
-                                                        SUMMARY
+                                                        Total images
                                                     </p>
                                                     <h5 class="font-weight-bolder">
-                                                        $103,430
+                                                        {{ imagesCount }}
                                                     </h5>
-                                                    <p class="mb-0">
-                                                        <span class="text-success text-sm font-weight-bolder">+5%</span>
-                                                        than last month
-                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-4 text-end">
@@ -128,7 +112,34 @@
 
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import axios from 'axios';
+import { ref,onMounted } from 'vue';
+
+const roomTypes = ref(null);
+const hotelTypes = ref(null);
+const imagesCount = ref(null);
+const hotelCount = ref(null);
+
+const getCount = async () => {
+   
+    try {
+        const hotel_types = await axios.get(route('hotel_types.count'));
+        const room_types = await axios.get(route('room_types.count'));
+        const hotels = await axios.get(route('hotel_tab.count'));
+        const hotel_images = await axios.get(route('hotel_image.count'));
+
+        roomTypes.value=room_types.data;
+        hotelTypes.value=hotel_types.data;
+        hotelCount.value=hotels.data;
+        imagesCount.value=hotel_images.data;
+        
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+
+
+onMounted(getCount)
 </script>
 
 <style>

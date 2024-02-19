@@ -56,4 +56,8 @@ class HotelImageService{
             }
             
         }
+
+        public function count(){
+            return $this->hotel_image->count();
+        }
 }

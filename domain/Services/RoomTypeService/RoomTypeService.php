@@ -31,4 +31,8 @@ class RoomTypeService {
         $hotelType= $this->room_type->find($id);
         return $hotelType->update($data);
     }
+
+    public function count(){
+        return $this->room_type->count();
+    }
 }

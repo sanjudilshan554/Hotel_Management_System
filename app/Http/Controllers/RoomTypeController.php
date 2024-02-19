@@ -36,4 +36,10 @@ class RoomTypeController extends Controller
         return $response;
     }
 
+    public function count(){
+        $response=RoomTypeFacade::count();
+        return $response;
+    }
+
+
 }

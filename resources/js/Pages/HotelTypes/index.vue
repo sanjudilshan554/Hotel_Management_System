@@ -138,7 +138,7 @@
                                             <div v-else-if="value.price_range == 2">
                                                 Rs.100000 - 300000 per day
                                             </div>
-                                            <div v-else-if="value.price_range == 2">
+                                            <div v-else-if="value.price_range == 3">
                                                 Rs.300000 - 500000 per day
                                             </div>
                                         </td>

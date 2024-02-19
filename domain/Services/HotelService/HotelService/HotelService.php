@@ -14,4 +14,8 @@ class HotelService{
     public function store($data){
         return $this->hotel_service->create($data);
     }
+
+    public function count(){
+        return $this->hotel_service->count();
+    }
 }

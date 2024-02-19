@@ -85,7 +85,8 @@ import { Link } from '@inertiajs/vue3'
 }
 
 .bg{
-  background-color: rgba(245, 236, 227, 0.856);
+  background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
 
 }
 

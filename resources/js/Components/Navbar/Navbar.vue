@@ -26,7 +26,8 @@ export default {
 
 <style scoped>
 .des {
-  background-color: rgba(197, 196, 177, 0.61);
+  background-color: rgb(91, 137, 207);
+  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
 }
 
 .navbar {

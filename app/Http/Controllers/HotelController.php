@@ -16,4 +16,9 @@ class HotelController extends Controller
         $response['hotel']=HotelFacade::store($request->all());
         return $response;
     }
+
+    public function count(){
+        $response=HotelFacade::count();
+        return $response;
+    }
 }

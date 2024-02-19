@@ -81,10 +81,11 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Mark</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+
+                                        <td>1</td>
+                                        <!-- <td>{{ singleData.value.name }}</td> -->
+                                        <!-- <td>{{ singleData.value.category }}</td>
+                                        <td>{{ singleData.value.location }}</td> -->
                                     </tr>
                                 </tbody>
                             </table>
@@ -108,6 +109,8 @@ const HotelEntry = ref({
     location:'',
 });
 
+const singleData = ([]);
+
 const createHotelEntry = async () => {
     if (!HotelEntry.value.name || !HotelEntry.value.category || !HotelEntry.value.location) {
         
@@ -130,6 +133,17 @@ const createHotelEntry = async () => {
     }
 }
 
+const get = async () => {
+    try{
+        const response = await axios.get(route('hotel.entry.get'));
+        singleData.value=response.data.hotel_entry;
+
+    }catch(error){
+        console.log('Error:',error);
+    }
+}
+
+onMounted(get);
 </script>
 
 <style scoped>
