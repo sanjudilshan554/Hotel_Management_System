@@ -29,23 +29,24 @@
                                             <div class="from-content">
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">Hotel Name</label>
-                                                    <input class="form-control" type="text" placeholder="Mount Lavania"
+                                                    <input class="form-control" type="text" placeholder="Mount Lavania" v-model="HotelEntry.name"
                                                         aria-label="default input example">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Hotel Category</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option value="1">Luxury Hotels</option>
-                                                        <option value="2">Mid-Range Hotels</option>
-                                                        <option value="3">Budget Hotels</option>
+                                                    <select class="form-select" aria-label="Default select example" v-model="HotelEntry.category">
+                                                        <option value="Luxury Hotels">Luxury Hotels</option>
+                                                        <option value="Mid-Range Hotels">Mid-Range Hotels</option>
+                                                        <option value="Budget Hotel">Budget Hotels</option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Location</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
+                                                        <select class="form-select" aria-label="Default select example" v-model="HotelEntry.location">
+                                                        <option value="Location 1">Location 1</option>
+                                                        <option value="Location 2">Location 2</option>
+                                                        <option value="Location 3">Location 3</option>
+                                                        <option value="Location 4">Location 4</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -53,7 +54,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cansel</button>
-                                            <button type="submit" class="btn btn-success">Create</button>
+                                            <button type="submit" class="btn btn-success" @click.prevent="createHotelEntry()">Create</button>
                                         </div>
                                     </form>
                                 </div>
@@ -65,11 +66,9 @@
                 <section class="table-section mt-5">
                     <div class="card col-12">
                         <div class="card-header">
-                       
                             <button class="btn btn-outline-success  btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <i class="fa-solid fa-plus add-icon"></i> create new
                             </button>
-
                             <div class="card-body">
                             <table class="table text-center">
                                 <thead>
@@ -101,17 +100,42 @@
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
+import axios from 'axios';
+import { ref,onMounted } from 'vue';
+
+const HotelEntry = ref({
+    name:'',
+    category:'',
+    location:'',
+});
+
+
+const createHotelEntry = async () => {
+    try{
+        const response = await axios.post(route('hotel.entry.store'), HotelEntry.value);
+        const hotel_entry=response.data.hotel_entry;
+        if(hotel_entry){
+            window.location.href = '/hotel/tab/';
+        }else{
+            console.log('no data');
+        }
+    }catch(error){
+        console.log('Error:',error);
+    }
+}
+
+    
 
 
 </script>
 <style scoped>
 .header {
-    color: #ffffff;
+    color: #554646;
     font-size: large;
 }
 
 .sub-header {
-    color: #ffffff;
+    color: #3f9ac4;
     font-size: xx-large;
     display: flex;
     justify-content: space-between;
@@ -126,7 +150,7 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 
 .sub-header-text {
     font-size: large;
-    color: white;
+    color: rgb(59, 150, 142);
     margin-left: 1vh;
 }
 

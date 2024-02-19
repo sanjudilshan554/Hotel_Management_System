@@ -60,7 +60,7 @@
           <div class="collapse" id="ecommerceExamples">
             <ul class="nav ms-4">
               <li class="nav-item">
-                <Link class="nav-link" :href="route('hotel')">
+                <Link class="nav-link" :href="route('hotel.entry')">
                   <span class="sidenav-mini-icon"> O </span>
                   <span class="sidenav-normal"> Hotels </span>
                 </Link>

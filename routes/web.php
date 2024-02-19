@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\HotelEntryConroller;
 use App\Http\Controllers\HotelTab;
 use App\Http\Controllers\HotelTabController;
 use App\Http\Controllers\HotelTypeController;
@@ -25,9 +26,13 @@ use Inertia\Inertia;
 Route::get("/",[HomeController::class,"index"])->name("dashboard");
 
 
-Route::prefix('hotel')->group(function () {
-    Route::get("/hotels",[HotelController::class,"index"])->name("hotel");
-    Route::get("/hotels/tab",[HotelTabController::class,"index"])->name("hotel_tab");
+Route::prefix('hotel/tab')->group(function () {
+    Route::get("/",[HotelController::class,"index"])->name("hotel_tab");
+});
+
+Route::prefix('hotel/entry')->group(function () {
+    Route::get("/",[HotelEntryConroller::class,"index"])->name("hotel.entry");
+    Route::post("/store",[HotelEntryConroller::class,"store"])->name("hotel.entry.store");
 });
 
 Route::prefix('room_types')->group(function () {

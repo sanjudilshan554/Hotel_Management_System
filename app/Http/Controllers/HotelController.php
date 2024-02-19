@@ -8,6 +8,6 @@ use Inertia\Inertia;
 class HotelController extends Controller
 {
     public function index(){
-        return Inertia::render("Hotel/index");
+        return Inertia::render("HotelTab/index");
     }
 }
