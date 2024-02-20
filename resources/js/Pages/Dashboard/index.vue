@@ -22,7 +22,8 @@
                                             <div class="col-4 text-end">
                                                 <div
                                                     class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                                    
+                                                    <i class="fa-solid fa-hotel coin "></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -46,7 +47,7 @@
                                             <div class="col-4 text-end">
                                                 <div
                                                     class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                                                    <i class="fa-solid coin fa-bath"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,8 +71,7 @@
                                             <div class="col-4 text-end">
                                                 <div
                                                     class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                                    <i class="ni ni-paper-diploma text-lg opacity-10"
-                                                        aria-hidden="true"></i>
+                                                    <i class="fa-solid coin fa-bell-concierge"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,10 +92,10 @@
                                                     </h5>
                                                 </div>
                                             </div>
-                                            <div class="col-4 text-end">
+                                            <div class="col-4  text-end">
                                                 <div
                                                     class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                                                    <div class="ico"><i class="fa-solid coin fa-images"></i></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -142,7 +142,8 @@ const getCount = async () => {
 onMounted(getCount)
 </script>
 
-<style>
+<style scoped>
+
 
 .card{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.692);
@@ -150,6 +151,31 @@ onMounted(getCount)
 }
 
 .icon-shape{
-    font-size: xx-large;
+    font-size: 50px;
+    padding:large;
+    
+    margin: auto;
+}
+
+.icon{
+    display: flex;
+    width: 60px;
+    height: 60px;
+}
+
+.coin{
+    display: block;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.ico{
+    width: 5x;
+    height: 5px;
+    align-items: center;
+    justify-content: center;
+    
 }
 </style>

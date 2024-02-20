@@ -79,7 +79,7 @@
                                                                 <input type="email" class="form-control input-text"
                                                                     v-model="hotelData.address"
                                                                     id="exampleFormControlInput1"
-                                                                    placeholder="name@example.com">
+                                                                    placeholder="hotel address">
                                                             </div>
                                                         </div>
                                                         <div class="col-1 m-1">
@@ -101,7 +101,7 @@
                                                                 <input type="email" class="form-control input-text"
                                                                     v-model="hotelData.website"
                                                                     id="exampleFormControlInput1"
-                                                                    placeholder="name@example.com">
+                                                                    placeholder="www.mountlavina.com">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -113,7 +113,7 @@
                                                                 <input type="email" class="form-control input-text"
                                                                     v-model="hotelData.contact_number"
                                                                     id="exampleFormControlInput1"
-                                                                    placeholder="name@example.com">
+                                                                    placeholder="+94 712988298">
                                                             </div>
                                                         </div>
                                                         <div class="col m-1">
@@ -148,7 +148,7 @@
                                                                     class="form-label">email</label>
                                                                 <input type="email" class="form-control input-text"
                                                                     v-model="hotelData.email" id="exampleFormControlInput1"
-                                                                    placeholder="name@example.com">
+                                                                    placeholder="HH:MM AM/PM" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -160,7 +160,7 @@
                                                                 <input type="email" class="form-control input-text"
                                                                     v-model="hotelData.description"
                                                                     id="exampleFormControlInput1"
-                                                                    placeholder="name@example.com">
+                                                                    placeholder="if you have more">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -184,11 +184,12 @@
                                             </div>
                                             <div class="col pt-2 image-header">
                                                 <div class="image upload">
-                                                    <input type="file" class="form-control file" id="fileInput" 
+                                                    <input type="file" class="form-control file" id="fileInput"
                                                         @change="onImageChange">
-                                                    <button @click.prevent="createHotelImage()" class="btn btn-primary image-upload ">Upload</button>
+                                                    <button @click.prevent="createHotelImage()"
+                                                        class="btn btn-primary image-upload ">Upload</button>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="image-setup image-section border" v-for="value in hotelImage">
@@ -196,18 +197,20 @@
                                             <div class="card  image-section " style="width: 16rem;">
                                                 <img :src="value.url" class="card-img-top" alt="dfdsfds">
                                                 <div class="card-body">
-                                                    <!-- <h5 class="card-title">Hotel name: {{ value.hotel_id}}</h5>
-                                                    <p class="card-text">Hotel category: {{ value.category }}</p> -->
-                                                        
-                                                    <div class="" v-if="value.id == firstImageId">
-                                                        <button class="btn btn-danger m-2 p-2" @click.prevent="deleteImage(value.id)" disabled>delete</button>
 
-                                                        <a href="#" class="btn btn-primary m-2 p-2" @click.prevent="makePrimary(value.id)" disabled>make primary</a>
+                                                    <div class="" v-if="value.id == firstImageId">
+                                                        <button class="btn btn-danger m-2 p-2"
+                                                            @click.prevent="deleteImage(value.id)" disabled>delete</button>
+
+                                                        <a href="#" class="btn btn-primary m-2 p-2"
+                                                            @click.prevent="makePrimary(value.id)" disabled>make primary</a>
                                                     </div>
                                                     <div class="" v-else>
-                                                        <button class="btn btn-danger m-2 p-2" @click.prevent="deleteImage(value.id)">delete</button>
+                                                        <button class="btn btn-danger m-2 p-2"
+                                                            @click.prevent="deleteImage(value.id)">delete</button>
 
-                                                        <a href="#" class="btn btn-primary m-2 p-2" @click.prevent="makePrimary(value.id)">make primary</a>
+                                                        <a href="#" class="btn btn-primary m-2 p-2"
+                                                            @click.prevent="makePrimary(value.id)">make primary</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -260,7 +263,7 @@ const hotelImageData = ref({
     hotel_id: '',
 });
 
-const hotelImage = ref ([]);
+const hotelImage = ref([]);
 
 const firstImageId = ref(null);
 
@@ -280,10 +283,10 @@ const createHotel = async () => {
         console.log(response);
         hotelImageData.value.hotel_id = response.data.hotel.id;
         console.log(hotelImageData.value.hotel_id);
-        hotelImage.value= response.data.hotel_image;
+        hotelImage.value = response.data.hotel_image;
         document.querySelectorAll('.input-text').forEach((element) => {
-                element.disabled = true;
-            });
+            element.disabled = true;
+        });
         getImage();
     } catch (error) {
         console.log(error);
@@ -291,13 +294,13 @@ const createHotel = async () => {
 }
 
 const getImage = async () => {
-    try{
+    try {
         const response = await axios.get(route('hotel_image.all'));
-        hotelImage.value=response.data.hotel_image;
-        firstImageId.value= hotelImage.value[0].id;
-        console.log('f image',firstImageId.value);
-    }catch(error){
-        console.log('Error:',error);
+        hotelImage.value = response.data.hotel_image;
+        firstImageId.value = hotelImage.value[0].id;
+        console.log('f image', firstImageId.value);
+    } catch (error) {
+        console.log('Error:', error);
     }
 }
 
@@ -308,7 +311,7 @@ const createHotelImage = async () => {
         formData.append('hotel_id', hotelImageData.value.hotel_id);
         formData.append('status', 0);
         const response = await axios.post(route('hotel_image'), formData);
-        const hotel_id=response.data.hotel_image.hotel_id;
+        const hotel_id = response.data.hotel_image.hotel_id;
         console.log(hotel_id);
         getImage();
     } catch (error) {
@@ -319,9 +322,9 @@ const createHotelImage = async () => {
 const makePrimary = async (imageId) => {
     try {
         await updateImageStatus(firstImageId.value, 0);
-  
-        await updateImageStatus(imageId, 1);
 
+        await updateImageStatus(imageId, 1);
+        ;
         firstImageId.value = imageId;
     } catch (error) {
         console.log('Error:', error);
@@ -341,19 +344,7 @@ const updateImageStatus = async (imageId, status) => {
 const onImageChange = (e) => {
     console.log(e.target.files[0]);
     hotelImageData.value.image = e.target.files[0];
-    
-}
 
-const selectImage = () => {
-    document.getElementById('fileInput').click();
-}
-
-const pickFile = () => {
-    let input = document.getElementById('fileInput');
-    let file = input.files;
-    if (file && file[0]) {
-        hotelImageData.value.image = file[0];
-    }
 }
 
 
@@ -380,12 +371,12 @@ onMounted(() => {
 <style scoped>
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css";
 
-.upload{
+.upload {
     float: right;
-    display:flex;
+    display: flex;
 }
 
-.file{
+.file {
     background-color: #b2beb6;
 }
 
@@ -432,10 +423,10 @@ onMounted(() => {
     float: left;
     overflow: hidden;
     margin: 2vh;
-    
+
 }
 
-.border{
+.border {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.74);
     border-radius: 5px;
 }
@@ -657,7 +648,6 @@ onMounted(() => {
     box-shadow: 1px 1px 3px black;
 }
 
-.form-setup{
+.form-setup {
     padding: 10px;
-}
-</style>
+}</style>

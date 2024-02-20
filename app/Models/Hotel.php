@@ -23,7 +23,8 @@ class Hotel extends Model
         'hotel_entry_id',
     ];
 
-    // public function hotelImages(){
-    //     return $this->hasMany(HotelImages::class,'id','hotel')
-    // }
+    // one hotel has several image
+    public function hotelImages(){
+        return $this->hasMany(HotelImages::class,'hotel_id', 'id');
+    }
 }
