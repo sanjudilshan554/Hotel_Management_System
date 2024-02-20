@@ -34,16 +34,15 @@ const submit = () => {
         <div>
             <main class="main-content mt-0">
                 <div class="page-header align-items-start min-vh-50 pt-7 pb-9 m-3 border-radius-lg" style="
-                        background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-cover.jpg');
+                        background-image: url('image/setup_images/2.jpg');
                     ">
                     <span class="mask bg-gradient-dark opacity-6"></span>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5 text-center mx-auto">
-                                <h1 class="text-white mb-2 mt-5">Welcome!</h1>
+                                <h1 class="text-white mb-2 mt-5">Login!</h1>
                                 <p class="text-lead text-white">
-                                    Use these awesome forms to login or create
-                                    new account in your project for free.
+                                    Experience the beauty of life by logging  with us today.
                                 </p>
                             </div>
                         </div>
@@ -106,11 +105,8 @@ const submit = () => {
                                     </form>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                    <p class="mb-4 text-sm mx-auto">
-                                        <Link v-if="canResetPassword" :href="route('password.request')"
-                                            class="text-primary font-weight-bold">
-                                        Forgot your password?
-                                        </Link>
+                                    <p class="mb-4 text-sm mx-auto text-sm mt-3 mb-0 ">
+                                        <p>don't you have an account <Link href="/register"  class="text-dark font-weight-bolder">Register</Link></p>
                                     </p>
                                 </div>
                             </div>
