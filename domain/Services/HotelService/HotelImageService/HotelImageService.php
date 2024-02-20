@@ -33,7 +33,7 @@ class HotelImageService{
     
                         return $this->hotel_image->create([
                             'status' => $status,
-                            'url' => 'http://127.0.0.1:8000/' . $url, //not comma 
+                            'url' => 'http://127.0.0.1:8000/' . $url,
                             'hotel_id' => $hotel_id,
                         ]);
                     }
