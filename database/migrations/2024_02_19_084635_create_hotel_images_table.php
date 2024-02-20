@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('hotel_images', function (Blueprint $table) {
             $table->id();
+            // $table->integer('status')->nullable()->default(0);
             $table->integer('status')->nullable()->default(0);
             $table->string('url')->nullable();
             $table->foreignId('hotel_id')->nullable()->constrained('hotels');

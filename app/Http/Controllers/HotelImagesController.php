@@ -16,19 +16,32 @@ class HotelImagesController extends Controller
     }
     public function store(Request $request){
 
-        $response['hotel_image']=HotelImageFacade::store($request);
+        $firstImageid= $this->image->first();
+        
+        if($firstImageid){
+            $response['hotel_image']=HotelImageFacade::store($request);
+            return $response;
+        }else{
+            $status = 1;
+            $request->merge(['status'=>$status]);
+            $response['hotel_image']=HotelImageFacade::store($request);
+            return $response;
+        }       
+    }
+
+    public function updatePrimary($data){
+        
+    }
+
+    public function all(){
+
+        $response['hotel_image']=HotelImageFacade::all();
         return $response;
     }
 
-    public function all($id){
-
-        $response['hotel_image']=HotelImageFacade::all($id);
-        return $response;
-    }
-
-    public function delete($hotelId,$imageId,$status){
+    public function delete($imageId){
   
-        $response=HotelImageFacade::delete($hotelId,$imageId,$status);
+        $response=HotelImageFacade::delete($imageId);
         return $response;
     }
 

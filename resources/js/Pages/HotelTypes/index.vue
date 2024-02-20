@@ -1,10 +1,10 @@
 <template>
     <AppLayout title="Hotel Types">
         <template #content>
-            <section class="main-section mt-1">
+            <section class="main-section mt-4">
                 <section class="add-new-modal-section">
                     <div class="">
-                        <h1 class="display-5 text-left header">Hotel Types</h1>
+                        <h1 class="text-left header">Hotel Types</h1>
                     </div>
                     <!-- Button trigger modal -->
                     <div class="mt-5">
@@ -248,7 +248,7 @@ onMounted(getAll);
 <style scoped>
 
 .header {
-    color: #585555;
+    color: #1a3b17;
 }
 
 .action-buttons {

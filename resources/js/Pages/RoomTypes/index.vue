@@ -1,9 +1,9 @@
 <template>
     <AppLayout title="Room Types">
         <template #content>
-            <section class="main-section mt-1">
+            <section class="main-section mt-4">
                 <div class="">
-                    <h1 class="display-5 text-left header">Room Types</h1>
+                    <h1 class="text-left header">Room Types</h1>
                 </div>
                 <section class="edit-exist-modal-section mt-5">
                     <!-- Update -->
@@ -268,7 +268,7 @@ onMounted(getAll);
 </script>
 <style scoped>
 .header {
-    color: #635b5b;
+    color: #1a3b17;
 }
 
 .action-buttons {

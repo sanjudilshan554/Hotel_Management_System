@@ -127,6 +127,14 @@ import Footer from "@/Components/Footer/Footer.vue";
     justify-content: right;
     text-align: right;
     margin-right: 1rem
+
+}
+
+.logout {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
 }
 
 .main-contents{
@@ -138,7 +146,11 @@ import Footer from "@/Components/Footer/Footer.vue";
 .sidenav {
     z-index: 1000; 
   }
-  
+  .navbar {
+  width: 100%;
+  z-index: 1000;
+}
+
  
 /* .body-background-image{
     background-color: rgb(255, 142, 127);

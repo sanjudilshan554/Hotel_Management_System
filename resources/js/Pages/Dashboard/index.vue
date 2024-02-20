@@ -1,7 +1,7 @@
 <template>
     <AppLayout>
         <template #content>
-            <div class="container-fluid py-4">
+            <div class="container-fluid py-4 pt-5">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
@@ -146,5 +146,10 @@ onMounted(getCount)
 
 .card{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.692);
+    border-radius: 8px;
+}
+
+.icon-shape{
+    font-size: xx-large;
 }
 </style>

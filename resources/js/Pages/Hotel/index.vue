@@ -1,7 +1,7 @@
 <template>
     <AppLayout title="Hotel Types">
         <template #content>
-            <section class="main-section mt-1">
+            <section class="main-section mt-5">
                 <section class="add-new-modal-section">
                     <div class="">
                         <div class="sub-header">
@@ -10,7 +10,7 @@
                                 <h1 class="text-left sub-header-text">Hotel Management</h1>
                             </div>
                         </div>
-                        <h1 class="text-left header">Hotel Types</h1>
+                        <h1 class="text-left header">New Hotel</h1>
                     </div>
 
                  <!-- Modal -->
@@ -83,8 +83,8 @@
                                     <tr>
 
                                         <td>1</td>
-                                        <!-- <td>{{ singleData.value.name }}</td> -->
-                                        <!-- <td>{{ singleData.value.category }}</td>
+                                        <!-- <td>{{ singleData.value.name }}</td>
+                                        <td>{{ singleData.value.category }}</td>
                                         <td>{{ singleData.value.location }}</td> -->
                                     </tr>
                                 </tbody>
@@ -101,7 +101,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
 import axios from 'axios';
-import { ref,onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const HotelEntry = ref({
     name:'',
@@ -167,7 +167,7 @@ onMounted(get);
 }
 
 .sub-header-text {
-    font-size: large;
+    font-size: xx-large;
     color: rgb(59, 150, 142);
     margin-left: 1vh;
 }

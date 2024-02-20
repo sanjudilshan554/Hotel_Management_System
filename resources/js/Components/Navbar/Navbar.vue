@@ -6,11 +6,11 @@
         <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
-            <a href="../../pages/authentication/signin/illustration.html"
-              class="nav-link text-white font-weight-bold px-0" target="_blank">
-              <i class="fa fa-user me-sm-1"></i>
-              <span class="d-sm-inline d-none">Admin</span>
-            </a>
+            <!-- <a href=""
+              class="nav-link text-white font-weight-bold px-0 user" target="_blank"> -->
+              <!-- <i class="fa fa-user me-sm-1 user"></i>
+              <span class="d-sm-inline d-none text-dark">Admin</span> -->
+            <!-- </a> -->
           </li>
         </ul>
       </div>
@@ -26,16 +26,22 @@ export default {
 
 <style scoped>
 .des {
-  background-color: rgb(91, 137, 207);
+  background-color: rgb(161, 179, 206);
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
 }
 
 .navbar {
   width: 100%;
+  height: 70px;
 }
 
 .container-fluid {
   padding-right: 0; /* Reset default padding */
   padding-left: 0; /* Reset default padding */
+}
+
+.user{
+  margin-right: 16vh;
+  color: black;
 }
 </style>

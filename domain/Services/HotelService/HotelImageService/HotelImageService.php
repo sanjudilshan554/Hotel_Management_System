@@ -13,6 +13,8 @@ class HotelImageService{
 
         public function store($data){
 
+            
+
             if  ($data->hasFile('image')) {
                 $profile_image = $data->File('image');
                 if ($profile_image->isValid()) {
@@ -39,21 +41,23 @@ class HotelImageService{
             }
         }
 
-        public function all($id){
-            $data = $this->hotel_image->with('hotels')->where('hotel_id', $id)->get();
+        public function all(){
+            $data = $this->hotel_image->with('hotels')->get();
             return $data;
         }
 
-        public function delete( $hotelId,$imageId,$status){
+        public function delete( $imageId){
 
-            $image= $this->hotel_image->where('hotel_id',$hotelId)->get();
+            $this->hotel_image->destroy($imageId);
+
+            // $image= $this->hotel_image->where('hotel_id',$hotelId)->get();
             
-            if($image[0]['id'] == $imageId || $status == 1){
-                return 1;
-            }else{
-                return 2;
-                return $this->hotel_image->destroy($imageId);
-            }
+            // if($image[0]['id'] == $imageId || $status == 1){
+            //     return 1;
+            // }else{
+            //     return 2;
+            //     return $this->hotel_image->destroy($imageId);
+            // }
             
         }
 
