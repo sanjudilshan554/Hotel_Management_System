@@ -13,8 +13,6 @@ class HotelImageService{
 
         public function store($data){
 
-            
-
             if  ($data->hasFile('image')) {
                 $profile_image = $data->File('image');
                 if ($profile_image->isValid()) {
@@ -42,7 +40,7 @@ class HotelImageService{
         }
 
         public function all(){
-            $data = $this->hotel_image->with('hotels')->get();
+            $data = $this->hotel_image->get();
             return $data;
         }
 
